@@ -1,0 +1,26 @@
+//memory-writeback register
+module mem_wb_reg (
+    input clk, rst, stall, flush,
+    
+    input [31:0] alu_result_in,
+    input [31:0] mem_read_data_in,
+    input [3:0] rd_addr_in,
+    input reg_write_in,
+    input mem_to_reg_in,
+
+    output reg [31:0] alu_result_out,
+    output reg [31:0] mem_read_data_out,
+    output reg [3:0] rd_addr_out,
+    output reg reg_write_out,
+    output reg mem_to_reg_out
+);
+    always @(posedge clk) begin
+        if (rst || flush) begin
+            alu_result_out <= 32'b0; mem_read_data_out <= 32'b0;
+            rd_addr_out <= 4'b0; reg_write_out <= 1'b0; mem_to_reg_out <= 1'b0;
+        end else if (!stall) begin
+            alu_result_out <= alu_result_in; mem_read_data_out <= mem_read_data_in;
+            rd_addr_out <= rd_addr_in; reg_write_out <= reg_write_in; mem_to_reg_out <= mem_to_reg_in;
+        end
+    end
+endmodule
