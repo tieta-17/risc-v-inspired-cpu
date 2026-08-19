@@ -7,7 +7,7 @@ module instr_mem(
     assign instr = mem[addr[31:2]];
 
     initial begin
-        mem[0] = { 4'b0100, 4'd1, 4'd0, 20'd17 };        // ADDI x1, x0, 4      (a=4)
+        mem[0] = { 4'b0100, 4'd1, 4'd0, 20'd17 };        // ADDI x1, x0, 7777777(a=4)
         mem[1] = { 4'b0100, 4'd2, 4'd0, 20'd3 };        // ADDI x2, x0, 3      (b=3)
         mem[2] = { 4'b0100, 4'd3, 4'd0, 20'd0 };        // ADDI x3, x0, 0      (result=0)
         mem[3] = { 4'b0111, 4'd0, 4'd2, 20'd16 };       // BEQ  x2, x0, +16    (loop: exit if counter==0)
