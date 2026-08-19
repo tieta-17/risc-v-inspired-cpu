@@ -44,6 +44,6 @@ The pipelined CPU is functionally complete and passes a growing testbench suite 
 
 ## What's next
 
-- FPGA bring-up on a Tang Nano 9K — top-level wrapper, real program loading, first bitstream flash
+- FPGA bring-up on a Tang Nano 9K
 - Extending the ISA (shifts, unconditional jump, more instructions)
 - Eventually: a from-scratch build targeting real RV32I encoding
