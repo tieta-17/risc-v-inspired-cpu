@@ -14,7 +14,10 @@
 
 module pipelined_datapath (
     input clk,
-    input rst
+    input rst,
+    output [31:0] dbg_wb_data,
+    output [3:0] dbg_wb_rd_addr,
+    output       dbg_wb_reg_write
 ); 
     // instruction fetch stage
     wire [31:0] pc_current, pc_plus4, pc_next_actual, branch_target;
@@ -199,5 +202,9 @@ module pipelined_datapath (
         .ex_mem_to_reg(ex_mem_to_reg),
         .stall(stall)
     );
+
+    assign dbg_wb_data = wb_write_back_data;
+    assign dbg_wb_rd_addr = wb_rd_addr;
+    assign dbg_wb_reg_write = wb_reg_write;
 
 endmodule

@@ -6,16 +6,10 @@ module data_memory (
     input  [31:0] write_data,  // value to store
     output [31:0] read_data    // value loaded (for LW)
 );
-    reg [31:0] mem [0:255];
-    integer i;
-
+    reg [31:0] mem [0:15];
     always @(posedge clk) begin
-        if (rst) begin
-            for (i = 0; i < 256; i = i + 1)
-                mem[i] <= 32'b0;
-        end else if (mem_write) begin
+        if (mem_write)
             mem[addr[31:2]] <= write_data;
-        end
     end
 
     assign read_data = mem[addr[31:2]];

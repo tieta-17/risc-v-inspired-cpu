@@ -28,4 +28,4 @@ module forwarding_unit (
         else
             forward_b = 2'b00;
     end
-endmodule;
+endmodule
